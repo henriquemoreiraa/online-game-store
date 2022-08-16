@@ -9,7 +9,7 @@ type Props = {
 
 function Banner({ games }: Props) {
   return (
-    <div className="flex justify-center w-full h-full">
+    <div className="flex justify-center w-full h-screen">
       <div className="w-5/6 h-4/5 ">
         <Swiper
           className="w-full h-full rounded-xl"
@@ -19,7 +19,7 @@ function Banner({ games }: Props) {
           modules={[Autoplay]}
         >
           {games.map((game) => (
-            <SwiperSlide className="flex flex-col justify-center items-center relative">
+            <SwiperSlide className=" flex flex-col justify-center items-center relative">
               <img
                 className="w-full h-full object-cover "
                 src={`${game.game_img}`}

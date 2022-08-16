@@ -10,12 +10,12 @@ type Props = {
 
 function GamesList({ games }: Props) {
   return (
-    <div className="flex flex-col justify-center w-full h-screen">
-      <p className=" flex flex-row items-center text-xl my-5 font-semibold">
+    <div className="flex flex-col justify-center items-center h-screen">
+      <p className=" flex flex-row items-center text-xl my-5 font-semibold w-full px-11">
         ALL GAMES AVAIABLE{" "}
         <span className="text-xs mx-3 text-gray-200">{`>`}</span>
       </p>
-      <div className="w-full h-4/5 ">
+      <div className="w-11/12 h-4/5 ">
         <Swiper
           navigation={true}
           modules={[Navigation]}
@@ -32,13 +32,10 @@ function GamesList({ games }: Props) {
                 alt=""
               />
               <div className="absolute bottom-0 left-0 bg-gradient-to-r from-blackTranparent to-transparent w-full h-full flex flex-col justify-end py-5 px-5">
-                <p className=" my-1 text-3xl font-bold">{game.name}</p>
+                <p className=" my-1 text-2xl font-bold">{game.name}</p>
                 <p className=" my-1 font-semibold text-ms">
                   Starting at ${`${game.price}`}
                 </p>
-                <button className=" bg-white text-black p-4 rounded-xl text-xs font-semibold shadow-xl w-40">
-                  BUY NOW
-                </button>
               </div>
             </SwiperSlide>
           ))}

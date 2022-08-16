@@ -1,4 +1,12 @@
-function Home() {
+import { gql } from "@apollo/client";
+import gqlClient from "../../graphql/apollo-client";
+import { Games } from "../types";
+
+type Props = {
+  games: Games[];
+};
+
+function Home({ games }: Props) {
   return (
     <div className=" bg-neutral-800	flex flex-col items-center h-screen text-white">
       {/* <Header /> */}
@@ -15,11 +23,14 @@ function Home() {
           </div>
         </div>
         <div className="flex justify-center">
-          <img
+          {/* <img
             className="w-5/6"
             src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fthe-witcher-3%2Fhome%2FEGS_TheWitcher3WildHuntGameoftheYear_CDPROJEKTRED_S1-2560x1440-8098a14981896e323a67fb85f1ca9967110f033f.jpg"
             alt=""
-          />
+          /> */}
+          {games.map((game) => (
+            <img src={`${game.game_img}`} alt="" />
+          ))}
         </div>
         <div>
           <h4>All games</h4>
@@ -30,3 +41,27 @@ function Home() {
 }
 
 export default Home;
+
+export const getServerSideProps = async () => {
+  const { data } = await gqlClient.query({
+    query: gql`
+      query {
+        games {
+          id
+          name
+          price
+          game_img
+          genre {
+            name
+          }
+        }
+      }
+    `,
+  });
+  console.log(data.games);
+  return {
+    props: {
+      games: data.games,
+    },
+  };
+};

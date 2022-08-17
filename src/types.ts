@@ -3,7 +3,7 @@ export type Games = {
   name: String;
   price: String;
   game_img: String;
-  game_banner: String;
+  game_trailer: String;
   genre: {
     name: String;
   };

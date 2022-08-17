@@ -16,17 +16,17 @@ model User {
 }
 
 model Games {
-  id          String  @id @default(uuid())
-  name        String
-  price       Float
-  game_img    String
-  game_banner String
-  genre       Genres  @relation(fields: [genresId], references: [id])
-  genresId    String
-  wish_list   User?   @relation("wish_list", fields: [wish_listId], references: [id])
-  wish_listId String?
-  cart        User?   @relation("cart", fields: [cartId], references: [id])
-  cartId      String?
+  id           String  @id @default(uuid())
+  name         String
+  price        Float
+  game_img     String
+  game_trailer String
+  genre        Genres  @relation(fields: [genresId], references: [id])
+  genresId     String
+  wish_list    User?   @relation("wish_list", fields: [wish_listId], references: [id])
+  wish_listId  String?
+  cart         User?   @relation("cart", fields: [cartId], references: [id])
+  cartId       String?
 }
 
 model Genres {

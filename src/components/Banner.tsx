@@ -10,7 +10,7 @@ type Props = {
 function Banner({ games }: Props) {
   return (
     <div className="flex justify-center w-full h-screen">
-      <div className="w-5/6 h-4/5 ">
+      <div className="w-full sm:w-4/5 h-4/5 ">
         <Swiper
           className="w-full h-full rounded-xl"
           slidesPerView={1}
@@ -20,20 +20,24 @@ function Banner({ games }: Props) {
         >
           {games.map((game) => (
             <SwiperSlide className=" flex flex-col justify-center items-center relative">
-              <img
-                className="w-full h-full object-cover "
-                src={`${game.game_img}`}
-                alt=""
-              />
-              <div className="absolute bottom-0 left-0 bg-gradient-to-r from-blackTranparent to-transparent w-full h-full flex flex-col justify-end py-5 px-5">
-                <p className=" my-1 text-3xl font-bold">{game.name}</p>
-                <p className=" my-1 font-semibold text-ms">
-                  Starting at ${`${game.price}`}
-                </p>
-                <button className=" bg-white text-black p-4 rounded-xl text-xs font-semibold shadow-xl w-40">
-                  BUY NOW
-                </button>
-              </div>
+              <a className="w-full h-full" href={`/game/${game.id}`}>
+                <img
+                  className="w-full h-full object-cover "
+                  src={`${game.game_img}`}
+                  alt=""
+                />
+                <div className="absolute bottom-0 left-0 bg-gradient-to-r from-blackTranparent to-transparent w-full h-full flex flex-col justify-end py-5 px-5">
+                  <p className=" my-1 text-2xl sm:text-3xl font-bold">
+                    {game.name}
+                  </p>
+                  <p className=" my-1 font-semibold text-ms">
+                    Starting at ${`${game.price}`}
+                  </p>
+                  <button className=" bg-white text-black p-4 rounded-xl text-xs font-semibold shadow-xl sm:w-40 w-full">
+                    BUY NOW
+                  </button>
+                </div>
+              </a>
             </SwiperSlide>
           ))}
         </Swiper>

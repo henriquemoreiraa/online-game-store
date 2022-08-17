@@ -24,7 +24,7 @@ function Home({ games }: Props) {
               <FiSearch />
             </button>
             <input
-              className="bg-neutral-800 rounded-tr-3xl rounded-br-3xl border-none text-white p-3 w-32 text-xs placeholder-white"
+              className="bg-neutral-800 rounded-tr-3xl rounded-br-3xl border-none text-white p-3 w-28 text-xs placeholder-white"
               type="text"
               placeholder="Search game"
             />
@@ -62,9 +62,6 @@ export const getServerSideProps = async () => {
           name
           price
           game_img
-          genre {
-            name
-          }
         }
       }
     `,

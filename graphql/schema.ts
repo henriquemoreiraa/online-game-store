@@ -27,6 +27,7 @@ export const typeDefs = gql`
   type Query {
     user: [User]!
     games: [Games]!
+    game(id: ID!): Games!
     genres: [Genres]!
   }
 `;

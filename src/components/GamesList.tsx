@@ -36,7 +36,7 @@ function GamesList({ games }: Props) {
                 <div className="absolute bottom-0 left-0 bg-gradient-to-r from-blackTranparent to-transparent w-full h-full flex flex-col justify-end py-5 px-5">
                   <p className=" my-1 text-2xl font-bold">{game.name}</p>
                   <p className=" my-1 font-semibold text-ms">
-                    Starting at ${`${game.price}`}
+                    Starting at ${`${game.price},00`}
                   </p>
                 </div>
               </a>

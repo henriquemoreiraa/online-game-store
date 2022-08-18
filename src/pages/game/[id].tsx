@@ -1,6 +1,5 @@
 import { gql } from "apollo-server-micro";
 import gqlClient from "../../../graphql/apollo-client";
-import { Games } from "@prisma/client";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Header2 from "../../components/Header2";
@@ -21,16 +20,15 @@ type Props = {
 };
 
 function Game({ game }: Props) {
-  console.log(game);
   return (
     <>
       <Header />
       <div className="text-white h-screen flex flex-col items-center ">
         <div className=" w-11/12 ">
           <Header2 />
-          <div className="flex flex-col md:flex-row justify-evenly my-5  h-4/5">
+          <div className="flex flex-col md:flex-row justify-evenly my-5 items-center h-4/5">
             <div className="w-full md:w-3/6 h-full">
-              <h1 className="text-2xl md:text-3xl font-semibold mb-10 ">
+              <h1 className="text-2xl md:text-3xl font-semibold mb-5 ">
                 {game.name}
               </h1>
               <iframe
@@ -41,11 +39,11 @@ function Game({ game }: Props) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
             </div>
-            <div className="mt-28 md:my-20 md:w-1/4">
-              <p className="mb-5">${game.price}.00</p>
-              <Button btn="buy" />
-              <Button btn="cart" />
-              <Button btn="wish" />
+            <div className="mt-28 md:my-20 md:w-1/4 ">
+              <p className="mb-5">${game.price},00</p>
+              <Button btn="buy" game={game} />
+              <Button btn="cart" game={game} />
+              <Button btn="wish" game={game} />
               <p className="border-b	border-gray-500 flex justify-between text-gray-400 mt-5">
                 Genre: <span className="text-white">{game.genre.name}</span>
               </p>

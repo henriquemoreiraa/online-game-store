@@ -31,7 +31,7 @@ function Banner({ games }: Props) {
                     {game.name}
                   </p>
                   <p className=" my-1 font-semibold text-ms ml-1">
-                    Starting at ${`${game.price}`}
+                    Starting at ${`${game.price},00`}
                   </p>
                   <button className=" bg-indigo-600 text-white p-4 rounded-xl text-xs font-semibold shadow-xl sm:w-40 w-full">
                     BUY NOW

@@ -19,20 +19,6 @@ const apolloServer = new ApolloServer({
 
 const startServer = apolloServer.start();
 
-// const handler: NextApiHandler = async (req, res) => {
-//   if (req.method === "OPTIONS") {
-//     res.end();
-//     return false;
-//   }
-
-//   await startServer;
-
-//   const apolloHandler = await apolloServer.createHandler({
-//     path: "/api/graphql",
-//   });
-//   return apolloHandler(req, res);
-// };
-
 export default cors(async function (req, res) {
   if (req.method === "OPTIONS") {
     res.end();

@@ -27,13 +27,13 @@ function Banner({ games }: Props) {
                   alt=""
                 />
                 <div className="absolute bottom-0 left-0 bg-gradient-to-r from-blackTranparent to-transparent w-full h-full flex flex-col justify-end py-5 px-5">
-                  <p className=" my-1 text-2xl sm:text-3xl font-bold">
+                  <p className=" my-1 text-2xl sm:text-3xl font-bold ml-1">
                     {game.name}
                   </p>
-                  <p className=" my-1 font-semibold text-ms">
+                  <p className=" my-1 font-semibold text-ms ml-1">
                     Starting at ${`${game.price}`}
                   </p>
-                  <button className=" bg-white text-black p-4 rounded-xl text-xs font-semibold shadow-xl sm:w-40 w-full">
+                  <button className=" bg-indigo-600 text-white p-4 rounded-xl text-xs font-semibold shadow-xl sm:w-40 w-full">
                     BUY NOW
                   </button>
                 </div>

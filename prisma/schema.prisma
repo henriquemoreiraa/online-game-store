@@ -8,25 +8,23 @@ datasource db {
 }
 
 model User {
-  id        String  @id @default(uuid())
-  email     String  @unique
-  name      String
-  wish_list Games[] @relation("wish_list")
-  cart      Games[] @relation("cart")
+  id         String  @id @default(uuid())
+  email      String  @unique
+  name       String
+  cart       Games[] @relation("cart")
+  user_games Games[] @relation("user_games")
 }
 
 model Games {
-  id           String  @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
   price        Float
   game_img     String
   game_trailer String
-  genre        Genres  @relation(fields: [genresId], references: [id])
+  genre        Genres[]
   genresId     String
-  wish_list    User?   @relation("wish_list", fields: [wish_listId], references: [id])
-  wish_listId  String?
-  cart         User?   @relation("cart", fields: [cartId], references: [id])
-  cartId       String?
+  cart         User[]   @relation("cart")
+  user_games   User[]   @relation("user_games")
 }
 
 model Genres {

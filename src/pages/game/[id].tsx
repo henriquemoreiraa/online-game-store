@@ -20,6 +20,7 @@ type Props = {
 };
 
 function Game({ game }: Props) {
+  console.log(game);
   return (
     <>
       <Header />

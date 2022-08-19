@@ -1,4 +1,5 @@
-import { FiSearch, FiShoppingCart, FiHeart } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
+import { IoGrid, IoCartSharp } from "react-icons/io5";
 
 function Header2() {
   return (
@@ -17,15 +18,17 @@ function Header2() {
         />
       </div>
       <div className="flex flex-row items-center text-ms">
-        <p className="mr-5 cursor-pointer flex items-center hover:opacity-80">
-          <span className="mx-2">
-            <FiHeart />
-          </span>
-          Wish List{" "}
-        </p>
+        <a href="/library">
+          <p className="mr-5 cursor-pointer flex items-center hover:opacity-80">
+            <span className="mx-2">
+              <IoGrid />
+            </span>
+            Library{" "}
+          </p>
+        </a>
         <p className="cursor-pointer flex items-center hover:opacity-80">
           <span className="mx-2">
-            <FiShoppingCart />
+            <IoCartSharp size={"1.2em"} />
           </span>
           Cart{" "}
         </p>

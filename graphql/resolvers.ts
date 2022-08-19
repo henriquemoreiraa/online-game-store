@@ -2,7 +2,16 @@ import prisma from "../lib/prisma";
 
 export const resolvers = {
   Query: {
-    user: async (parent, args, ctx) => await ctx.prisma.user.findMany(),
+    users: async (parent, args, ctx) => await ctx.prisma.user.findMany(),
+    user: async (parent, args, ctx) =>
+      await ctx.prisma.user.findUnique({
+        where: {
+          id: args.id,
+        },
+        include: {
+          user_games: true,
+        },
+      }),
     games: async (parent, args, ctx) =>
       await ctx.prisma.games.findMany({
         include: {

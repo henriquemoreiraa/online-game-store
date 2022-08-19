@@ -5,8 +5,8 @@ export const typeDefs = gql`
     id: String
     email: String
     name: String
-    wish_list: [Games]
     cart: [Games]
+    user_games: [Games]
   }
 
   type Games {
@@ -25,7 +25,8 @@ export const typeDefs = gql`
   }
 
   type Query {
-    user: [User]!
+    users: [User]!
+    user(id: ID!): User!
     games: [Games]!
     game(id: ID!): Games!
     genres: [Genres]!

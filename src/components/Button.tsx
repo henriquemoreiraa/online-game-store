@@ -29,6 +29,7 @@ function Button({ btn, game: { price, name } }: Props) {
           const {
             data: { sessionId },
           } = await axios.post(`/api/stripe`, {
+            user: data.user.email,
             name: name,
             price: price,
             gameId: id,

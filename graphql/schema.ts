@@ -26,9 +26,13 @@ export const typeDefs = gql`
 
   type Query {
     users: [User]!
-    user(id: ID!): User!
+    user(email: String!): User!
     games: [Games]!
     game(id: ID!): Games!
     genres: [Genres]!
+  }
+
+  type Mutation {
+    addGameOnUserAcc(email: String!, game: ID!): User!
   }
 `;

@@ -3,6 +3,8 @@ import Header2 from "../components/Header2";
 import gqlClient from "../../graphql/apollo-client";
 import { gql } from "apollo-server-micro";
 import { User } from "../types";
+import { getSession, useSession } from "next-auth/react";
+import { GetServerSideProps } from "next";
 
 type Props = {
   user: User;
@@ -38,11 +40,22 @@ function Library({ user }: Props) {
 
 export default Library;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanet: false,
+      },
+    };
+  }
+
   const { data } = await gqlClient.query({
     query: gql`
-      query getUser($userId: ID! = "cab7b450-8a63-4fbb-b5b3-5a2a2f7e1aa5") {
-        user(id: $userId) {
+    query getUser($email: String! = "${session.user.email}") {
+        user(email: $email) {
           name
           user_games {
             name
@@ -50,9 +63,9 @@ export const getServerSideProps = async () => {
           }
         }
       }
-    `,
+      `,
   });
-  console.log(data);
+
   return {
     props: {
       user: data.user,

@@ -7,6 +7,8 @@ const stripe = new Stripe(process.env.STRIPE_KEY, {
 
 const cors = Cors();
 
+// stripetestcart = 4242424242424242
+
 const createCheckoutSession = cors(
   async (req: NextApiRequest, res: NextApiResponse) => {
     const price = parseInt(req.body.price) * 100;
@@ -26,7 +28,7 @@ const createCheckoutSession = cors(
         },
       ],
       mode: "payment",
-      success_url: `${process.env.APP_URL}/payment/success`,
+      success_url: `${process.env.APP_URL}/payment/success?game=${req.body.gameId}&user=${req.body.user}`,
       cancel_url: `${process.env.APP_URL}/game/${req.body.gameId}`,
     });
 

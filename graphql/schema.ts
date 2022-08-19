@@ -15,7 +15,7 @@ export const typeDefs = gql`
     price: String
     game_img: String
     game_trailer: String
-    genre: Genres
+    genre: [Genres]
   }
 
   type Genres {

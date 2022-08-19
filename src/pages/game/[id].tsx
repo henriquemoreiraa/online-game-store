@@ -12,7 +12,7 @@ type Game = {
   game_trailer: String;
   genre: {
     name: String;
-  };
+  }[];
 };
 
 type Props = {
@@ -40,14 +40,20 @@ function Game({ game }: Props) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
             </div>
-            <div className="mt-28 md:my-20 md:w-1/4 ">
+            <div className="mt-28 w-full md:my-20 md:w-1/4 ">
               <p className="mb-5">${game.price},00</p>
               <Button btn="buy" game={game} />
               <Button btn="cart" game={game} />
-              <Button btn="wish" game={game} />
-              <p className="border-b	border-gray-500 flex justify-between text-gray-400 mt-5">
-                Genre: <span className="text-white">{game.genre.name}</span>
+              <p className="border-b	border-gray-500  text-gray-400 mt-5">
+                Genre:{" "}
               </p>
+              <div className="text-end">
+                {game.genre.map((genre) => (
+                  <span className="text-white ml-3 text-xs font-bold">
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

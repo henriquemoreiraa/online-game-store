@@ -1,28 +1,40 @@
 import Header from "../components/Header";
 import Header2 from "../components/Header2";
 import gqlClient from "../../graphql/apollo-client";
+import { useState } from "react";
 import { gql } from "apollo-server-micro";
-import { User } from "../types";
-import { getSession, useSession } from "next-auth/react";
-import { GetServerSideProps } from "next";
+import { Game, User } from "../types";
+import { getSession } from "next-auth/react";
+import Cart from "../components/Cart";
 
 type Props = {
   user: User;
 };
 
 function Library({ user }: Props) {
+  const [isCart, setIsCart] = useState(false);
+  const [cartData, setCartData] = useState<Game[]>([]);
+
   return (
     <div className="flex flex-col items-center text-white h-fit">
       <Header />
       <div className="w-4/5 h-screen">
-        <Header2 />
+        <Header2
+          setIsCart={setIsCart}
+          isCart={isCart}
+          setCartData={setCartData}
+          cartData={cartData}
+        />
         <p className=" flex flex-row items-center sm:text-xl text-sm my-5 font-semibold w-full ">
           Your Games <span className="text-xs mx-3 text-gray-200">{`>`}</span>
         </p>
         <div className="h-full w-full flex flex-row flex-wrap justify-center md:justify-start gap-10">
           {user.user_games.map((game) => (
             <>
-              <div className="w-52 h-3/5 mb-16 bg-emerald-500">
+              <div
+                key={game.id as string}
+                className="w-52 h-3/5 mb-16 bg-emerald-500"
+              >
                 <img
                   className="w-full h-full object-cover"
                   src={`${game.game_img}`}

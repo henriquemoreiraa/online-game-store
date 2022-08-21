@@ -11,6 +11,11 @@ export const resolvers = {
         },
         include: {
           user_games: true,
+          cart: {
+            include: {
+              genre: true,
+            },
+          },
         },
       }),
     games: async (parent, args, ctx) =>
@@ -33,26 +38,55 @@ export const resolvers = {
 
   Mutation: {
     addGameOnUserAcc: async (parent, args, ctx) => {
-      const game = await prisma.games.findUnique({
-        where: {
-          id: args.game,
-        },
-        include: {
-          genre: true,
-        },
-      });
-
-      return await prisma.user.update({
+      return await ctx.prisma.user.update({
         where: {
           email: args.email,
         },
         data: {
           user_games: {
-            connect: [{ id: game.id }],
+            connect: [{ id: args.game }],
           },
         },
         include: {
           user_games: true,
+        },
+      });
+    },
+    addGameOnUserCart: async (parent, args, ctx) => {
+      return await ctx.prisma.user.update({
+        where: {
+          email: args.email,
+        },
+        data: {
+          cart: {
+            connect: [{ id: args.game }],
+          },
+        },
+        include: {
+          cart: {
+            include: {
+              genre: true,
+            },
+          },
+        },
+      });
+    },
+    deleteGameOnUserCart: async (parent, args, ctx) => {
+      return await ctx.prisma.user.update({
+        where: {
+          email: args.email,
+        },
+        data: {
+          cart: {
+            disconnect: [{ id: args.game }],
+          },
+        },
+        include: {
+          cart: {
+            include: {
+              genre: true,
+            },
+          },
         },
       });
     },

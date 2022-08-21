@@ -9,7 +9,9 @@ function Login({ setIsLogin }: Props) {
   return (
     <div className="fixed top-0 right-0 bottom-0 left-0 z-30 flex justify-center items-center ">
       <div className="bg-neutral-800 p-10 flex flex-col items-center relative rounded-sm">
-        <h1 className="mb-3 text-xl font-semibold">LOGO</h1>
+        <h1 className="mb-3 text-3xl font-semibold">
+          OG<span className=" text-indigo-300">s</span>
+        </h1>
         <p className="font-normal">Choose one way to login/register</p>
         <div className="flex mt-5 items-center justify-evenly text-center w-full">
           <button

@@ -1,4 +1,4 @@
-import { Games } from "../types";
+import { Game } from "../types";
 import { Navigation } from "swiper";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css";
 
 type Props = {
-  games: Games[];
+  games: Game[];
 };
 
 function GamesList({ games }: Props) {
@@ -26,7 +26,10 @@ function GamesList({ games }: Props) {
           loop={true}
         >
           {games.map((game) => (
-            <SwiperSlide className="flex flex-col justify-center items-center relative ">
+            <SwiperSlide
+              key={game.id as string}
+              className="flex flex-col justify-center items-center relative "
+            >
               <a className="h-full w-full" href={`/game/${game.id}`}>
                 <img
                   className="w-full h-full object-cover "
@@ -52,7 +55,10 @@ function GamesList({ games }: Props) {
           loop={true}
         >
           {games.map((game) => (
-            <SwiperSlide className="flex flex-col justify-center items-center relative ">
+            <SwiperSlide
+              key={game.id as string}
+              className="flex flex-col justify-center items-center relative "
+            >
               <a className="h-full w-full" href={`/game/${game.id}`}>
                 <img
                   className="w-full h-full object-cover "

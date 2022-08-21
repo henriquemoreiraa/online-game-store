@@ -1,32 +1,30 @@
 import { gql } from "apollo-server-micro";
+import { useState } from "react";
 import gqlClient from "../../../graphql/apollo-client";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Header2 from "../../components/Header2";
-
-type Game = {
-  id: String;
-  name: String;
-  price: String;
-  game_img: String;
-  game_trailer: String;
-  genre: {
-    name: String;
-  }[];
-};
+import { Game } from "../../types";
 
 type Props = {
   game: Game;
 };
 
 function Game({ game }: Props) {
-  console.log(game);
+  const [isCart, setIsCart] = useState(false);
+  const [cartData, setCartData] = useState<Game[]>([]);
+
   return (
     <>
       <Header />
-      <div className="text-white h-screen flex flex-col items-center ">
+      <div className="text-white h-screen flex flex-col items-center">
         <div className=" w-11/12 ">
-          <Header2 />
+          <Header2
+            setIsCart={setIsCart}
+            isCart={isCart}
+            setCartData={setCartData}
+            cartData={cartData}
+          />
           <div className="flex flex-col md:flex-row justify-evenly my-5 items-center h-4/5">
             <div className="w-full md:w-3/6 h-full">
               <h1 className="text-2xl md:text-3xl font-semibold mb-5 ">
@@ -43,7 +41,7 @@ function Game({ game }: Props) {
             <div className="mt-28 w-full md:my-20 md:w-1/4 ">
               <p className="mb-5">${game.price},00</p>
               <Button btn="buy" game={game} />
-              <Button btn="cart" game={game} />
+              <Button btn="cart" game={game} setCartData={setCartData} />
               <p className="border-b	border-gray-500  text-gray-400 mt-5">
                 Genre:{" "}
               </p>

@@ -1,10 +1,10 @@
-import { Games } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper";
+import { Game } from "../types";
 
 type Props = {
-  games: Games[];
+  games: Game[];
 };
 
 function Banner({ games }: Props) {
@@ -19,7 +19,10 @@ function Banner({ games }: Props) {
           modules={[Autoplay]}
         >
           {games.map((game) => (
-            <SwiperSlide className=" flex flex-col justify-center items-center relative">
+            <SwiperSlide
+              key={game.id as string}
+              className=" flex flex-col justify-center items-center relative"
+            >
               <a className="w-full h-full" href={`/game/${game.id}`}>
                 <img
                   className="w-full h-full object-cover "

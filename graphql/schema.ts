@@ -34,5 +34,7 @@ export const typeDefs = gql`
 
   type Mutation {
     addGameOnUserAcc(email: String!, game: ID!): User!
+    addGameOnUserCart(email: String!, game: ID!): User!
+    deleteGameOnUserCart(email: String!, game: ID!): User!
   }
 `;

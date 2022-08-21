@@ -27,7 +27,7 @@ function GamesList({ games }: Props) {
         >
           {games.map((game) => (
             <SwiperSlide
-              key={game.id}
+              key={game.id as string}
               className="flex flex-col justify-center items-center relative "
             >
               <a className="h-full w-full" href={`/game/${game.id}`}>

@@ -6,6 +6,7 @@ import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
+  secret: process.env.NEXT_PUBLIC_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({

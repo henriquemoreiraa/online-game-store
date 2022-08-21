@@ -13,7 +13,9 @@ function Success() {
         <p className="ml-3  text-2xl ">Successful payment</p>
       </div>
       <Link href="/library">
-        <p className="border-b hover:opacity-90">Go to your library</p>
+        <p className="border-b hover:opacity-90 cursor-pointer">
+          Go to your library
+        </p>
       </Link>
     </div>
   );

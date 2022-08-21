@@ -20,7 +20,7 @@ function Banner({ games }: Props) {
         >
           {games.map((game) => (
             <SwiperSlide
-              key={game.id as string}
+              key={game.id}
               className=" flex flex-col justify-center items-center relative"
             >
               <a className="w-full h-full" href={`/game/${game.id}`}>

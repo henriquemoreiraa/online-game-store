@@ -42,7 +42,7 @@ function Cart({ cartData, setIsCart, setCartData }: Props) {
         />
       </div>
       {cartData.map((game) => (
-        <div className="flex mb-5 items-center" key={game.id as string}>
+        <div className="flex mb-5 items-center" key={game.id}>
           <div className="w w-48 h-28">
             <img
               className="object-cover w-full h-full"

@@ -6,6 +6,7 @@ import { getSession, useSession } from "next-auth/react";
 import { Game } from "../types";
 import Cart from "./Cart";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Props = {
   setIsCart: (e: boolean) => void;
@@ -108,14 +109,14 @@ function Header2({ cartData, setIsCart, isCart, setCartData }: Props) {
       </div>
       <div className="flex flex-row items-center text-ms">
         {session.status === "authenticated" && (
-          <a href="/library">
+          <Link href="/library">
             <p className="mr-5 cursor-pointer flex items-center hover:opacity-80">
               <span className="mx-2">
                 <IoGrid />
               </span>
               Library{" "}
             </p>
-          </a>
+          </Link>
         )}
         <p
           onClick={() => setIsCart(true)}

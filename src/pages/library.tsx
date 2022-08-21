@@ -31,10 +31,7 @@ function Library({ user }: Props) {
         <div className="h-full w-full flex flex-row flex-wrap justify-center md:justify-start gap-10">
           {user.user_games.map((game) => (
             <>
-              <div
-                key={game.id as string}
-                className="w-52 h-3/5 mb-16 bg-emerald-500"
-              >
+              <div key={game.id} className="w-52 h-3/5 mb-16 bg-emerald-500">
                 <img
                   className="w-full h-full object-cover"
                   src={`${game.game_img}`}

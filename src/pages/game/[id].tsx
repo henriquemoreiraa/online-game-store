@@ -47,7 +47,10 @@ function Game({ game }: Props) {
               </p>
               <div className="text-end">
                 {game.genre.map((genre) => (
-                  <span className="text-white ml-3 text-xs font-bold">
+                  <span
+                    key={genre.name as string}
+                    className="text-white ml-3 text-xs font-bold"
+                  >
                     {genre.name}
                   </span>
                 ))}

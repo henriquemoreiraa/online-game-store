@@ -96,7 +96,7 @@ function Header2({ cartData, setIsCart, isCart, setCartData }: Props) {
             {searchGame.length > 0 ? (
               <div className="absolute p-5 w-48 bg-neutral-800 -left-12 top-12 overflow-auto">
                 {filteredGames.map((game) => (
-                  <a href={`/game/${game.id}`}>
+                  <a key={game.id as string} href={`/game/${game.id}`}>
                     <p className="text-xs mb-3 cursor-pointer">{game.name}</p>
                   </a>
                 ))}

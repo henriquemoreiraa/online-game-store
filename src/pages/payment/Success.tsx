@@ -2,6 +2,7 @@ import { BsCheckCircle } from "react-icons/bs";
 import gqlClient from "../../../graphql/apollo-client";
 import { gql } from "apollo-server-micro";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 
 function Success() {
   return (
@@ -11,9 +12,9 @@ function Success() {
         <BsCheckCircle color="rgb(129 140 248)" size={"1.5em"} />{" "}
         <p className="ml-3  text-2xl ">Successful payment</p>
       </div>
-      <a href="/library">
+      <Link href="/library">
         <p className="border-b hover:opacity-90">Go to your library</p>
-      </a>
+      </Link>
     </div>
   );
 }

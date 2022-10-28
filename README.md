@@ -1,6 +1,6 @@
 # 💳 Online Game Store
 
-Online Game Store is a games e-commerce. Where you can by games and add them to your cart.  
+Online Game Store is a game e-commerce. Where you can by games and add them to your cart.  
 
 ## How it works
 
